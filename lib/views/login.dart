@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:wavecoach/utils/colors.dart';
+import 'package:wavecoach/views/absensi_coach.dart';
+import 'package:wavecoach/views/forgot_password.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -17,7 +19,9 @@ class _LoginViewState extends State<LoginView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // Mengatur agar keyboard tidak menutupi textfield
       resizeToAvoidBottomInset: false,
+      // Warna Background
       backgroundColor: blueColor,
       body: Center(
         child: Column(
@@ -221,44 +225,54 @@ class _LoginViewState extends State<LoginView> {
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
+                        children: [
                         Row(
                           children: [
-                            Checkbox(
-                              value: true,
-                              onChanged: (bool? value) {
-                                // Handle checkbox state change
-                              },
-                              checkColor: blueColor,
-                              activeColor: Colors.white,
-                              side: BorderSide(color: Colors.white),
-                              fillColor: WidgetStateProperty.resolveWith<Color>(
-                                (Set<WidgetState> states) {
-                                  if (states.contains(WidgetState.selected)) {
-                                    return Colors.white;
-                                  }
-                                  return Colors.transparent;
-                                },
-                              ),
+                          Checkbox(
+                            value: true,
+                            onChanged: (bool? value) {
+                            // Handle checkbox state change
+                            },
+                            checkColor: blueColor,
+                            activeColor: Colors.white,
+                            side: BorderSide(color: Colors.white),
+                            fillColor: WidgetStateProperty.resolveWith<Color>(
+                            (Set<WidgetState> states) {
+                              if (states.contains(WidgetState.selected)) {
+                              return Colors.white;
+                              }
+                              return Colors.transparent;
+                            },
                             ),
-                            Text(
-                              "Remember me",
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 14,
-                                fontFamily: "poppins_medium",
-                              ),
+                          ),
+                          Text(
+                            "Remember me",
+                            style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 14,
+                            fontFamily: "poppins_medium",
                             ),
+                          ),
                           ],
                         ),
-                        Text(
+                        GestureDetector(
+                          onTap: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                            builder: (BuildContext context) => ForgotPasswordView(),
+                            ),
+                          );
+                          },
+                          child: Text(
                           "Forgot Password?",
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 14,
                             fontFamily: "poppins_medium",
                           ),
+                          ),
                         ),
+                        
                       ],
                     ),
                   ),
@@ -268,9 +282,14 @@ class _LoginViewState extends State<LoginView> {
                     child: GestureDetector(
                       onTap: (){
                         if(emailController.text != "" && passwordController.text != ""){
-                          print("Login berhasil dilakukan");
+                          Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(
+                            builder:
+                                (BuildContext context) => const AbsensiCoachView(),
+                          ),
+                        );
                         } else {
-                          print("Email dan Password tidak boleh kosong");
+                          // print("Email dan Password tidak boleh kosong");
                         }
                       },
                       child: Container(
