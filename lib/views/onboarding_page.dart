@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:wavecoach/utils/colors.dart';
-import 'package:wavecoach/views/login.dart';
 
 List onboardingData = [
   {
@@ -23,14 +22,14 @@ List onboardingData = [
   },
 ];
 
-class OnboardingView extends StatefulWidget {
-  const OnboardingView({super.key});
+class OnboardingPage extends StatefulWidget {
+  const OnboardingPage({super.key});
 
   @override
-  State<OnboardingView> createState() => _OnboardingViewState();
+  State<OnboardingPage> createState() => _OnboardingPageState();
 }
 
-class _OnboardingViewState extends State<OnboardingView> {
+class _OnboardingPageState extends State<OnboardingPage> {
   final PageController pageController = PageController();
   int currentPage = 0;
 
@@ -146,19 +145,14 @@ class _OnboardingViewState extends State<OnboardingView> {
               GestureDetector(
                 onTap: () {
                   if (currentPage == 2) {
-                    Navigator.of(context).pushReplacement(
-                      MaterialPageRoute(
-                        builder: (BuildContext context) => 
-                        const LoginView())
-                    );
-                  } else{
+                    Navigator.pushReplacementNamed(context, "/sign-in");
+                  } else {
                     pageController.animateToPage(
                       currentPage + 1,
                       duration: Duration(milliseconds: 200),
                       curve: Curves.easeInOut,
                     );
                   }
-                  
                 },
                 child: Padding(
                   padding: const EdgeInsets.only(bottom: 70),
