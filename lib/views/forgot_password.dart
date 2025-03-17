@@ -154,44 +154,45 @@ class _ForgotPasswordViewState extends State<ForgotPasswordView> {
                       ),
 
                       Padding(
-                    padding: const EdgeInsets.fromLTRB(40, 70, 40, 0),
-                    child: GestureDetector(
-                      onTap: (){
-                        if(emailController.text != ""){
-                          Navigator.of(context).pushReplacement(
-                          MaterialPageRoute(
-                            builder:
-                                (BuildContext context) => const ForgotPasswordChangeView(),
-                          ),
-                        );
-                        } else {
-                          // print("Email dan Password tidak boleh kosong");
-                        }
-                      },
-                      child: Container(
-                        height: 64,
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color:
-                              emailController.text != ""
-                                  ? Colors.white
-                                  : Colors.white.withValues(alpha: 0.3),
-                        ),
-                        child: Center(
-                          child: Text(
-                            "Submit",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontFamily: "poppins_regular",
-                              fontSize: 18,
-                              color: blueColor,
+                        padding: const EdgeInsets.fromLTRB(40, 70, 40, 0),
+                        child: GestureDetector(
+                          onTap: () {
+                            if (emailController.text != "") {
+                              Navigator.of(context).pushReplacement(
+                                MaterialPageRoute(
+                                  builder:
+                                      (BuildContext context) =>
+                                          const ForgotPasswordChangeView(),
+                                ),
+                              );
+                            } else {
+                              // print("Email dan Password tidak boleh kosong");
+                            }
+                          },
+                          child: Container(
+                            height: 64,
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              color:
+                                  emailController.text != ""
+                                      ? Colors.white
+                                      : Colors.white.withValues(alpha: 0.3),
+                            ),
+                            child: Center(
+                              child: Text(
+                                "Submit",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontFamily: "poppins_regular",
+                                  fontSize: 18,
+                                  color: blueColor,
+                                ),
+                              ),
                             ),
                           ),
                         ),
                       ),
-                    ),
-                  ),
                     ],
                   ),
                 ),

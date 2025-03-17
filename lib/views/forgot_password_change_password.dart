@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wavecoach/utils/colors.dart';
+import 'package:wavecoach/views/login.dart';
 
 class ForgotPasswordChangeView extends StatefulWidget {
   const ForgotPasswordChangeView({super.key});
@@ -243,9 +244,15 @@ class _ForgotPasswordChangeViewState extends State<ForgotPasswordChangeView> {
                         child: GestureDetector(
                           onTap: () {
                             if (passwordController.text != "" && reTypePasswordController.text != "") {
-                              // print("khgekhkg");
+                              Navigator.of(context).pushReplacement(
+                                MaterialPageRoute(
+                                  builder:
+                                      (BuildContext context) =>
+                                          const LoginView(),
+                                ),
+                              );
                             } else {
-                              // print("Email dan Password tidak boleh kosong");
+                              print("Password tidak boleh kosong");
                             }
                           },
                           child: Container(

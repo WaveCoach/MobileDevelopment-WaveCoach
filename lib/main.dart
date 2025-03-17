@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wavecoach/views/home.dart';
+import 'package:wavecoach/views/onboarding.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
       ),
-      home: const HomeScreenView(),
+      home: const OnboardingView(),
     );
   }
 }

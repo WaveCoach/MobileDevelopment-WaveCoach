@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:wavecoach/utils/colors.dart';
-import 'package:wavecoach/views/absensi_coach.dart';
 import 'package:wavecoach/views/forgot_password.dart';
+import 'package:wavecoach/views/home.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -285,7 +285,7 @@ class _LoginViewState extends State<LoginView> {
                           Navigator.of(context).pushReplacement(
                           MaterialPageRoute(
                             builder:
-                                (BuildContext context) => const AbsensiCoachView(),
+                                (BuildContext context) => const HomeScreenView(),
                           ),
                         );
                         } else {
