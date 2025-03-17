@@ -12,10 +12,230 @@ class _AbsensiCoachState extends State<AbsensiCoachView> {
   Color hadirButtonColor = Colors.white;
   Color tidakHadirButtonColor = Colors.white;
   bool showBuktiKehadiranButton = false;
-  bool showAlasanTidakHadir = false; // New state variable
+  bool showAlasanTidakHadir = false;
 
   @override
   Widget build(BuildContext context) {
+    Widget textAbsensiCoach() {
+      return Center(
+        child: Padding(
+          padding: const EdgeInsets.only(top: 100),
+          child: Text(
+            "Absensi Coach",
+            style: TextStyle(
+              fontFamily: "poppins_semibold",
+              fontSize: 32,
+              color: Colors.white,
+            ),
+          ),
+        ),
+      );
+    }
+
+    Widget textPresensiKehadiran() {
+      return Container(
+        padding: const EdgeInsets.symmetric(horizontal: 10),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(100),
+          color: blueColor,
+        ),
+        child: Text(
+          "Presensi Kehadiran",
+          style: TextStyle(
+            fontFamily: "poppins_semibold",
+            fontSize: 16,
+            color: Colors.white,
+          ),
+        ),
+      );
+    }
+
+    Widget kehadiranButton() {
+      return Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Expanded(
+            child: SizedBox(
+              height: 70,
+              child: ElevatedButton(
+                onPressed: () {
+                  setState(() {
+                    hadirButtonColor = Colors.green;
+                    tidakHadirButtonColor = Colors.white;
+                    showBuktiKehadiranButton = true;
+                    showAlasanTidakHadir = false; // Hide alasan tidak hadir
+                  });
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: hadirButtonColor,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+                child: Text(
+                  "Hadir",
+                  style: TextStyle(
+                    fontFamily: "poppins_semibold",
+                    fontSize: 18,
+                    color: Colors.black,
+                  ),
+                ),
+              ),
+            ),
+          ),
+          SizedBox(width: 10),
+          Expanded(
+            child: SizedBox(
+              height: 70,
+              child: ElevatedButton(
+                onPressed: () {
+                  setState(() {
+                    hadirButtonColor = Colors.white;
+                    tidakHadirButtonColor = Colors.red;
+                    showBuktiKehadiranButton = false;
+                    showAlasanTidakHadir = true; // Show alasan tidak hadir
+                  });
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: tidakHadirButtonColor,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+                child: Text(
+                  "Tidak hadir",
+                  style: TextStyle(
+                    fontFamily: "poppins_semibold",
+                    fontSize: 18,
+                    color: Colors.black,
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
+      );
+    }
+
+    Widget textAmbilGambar() {
+      return Container(
+        padding: const EdgeInsets.symmetric(horizontal: 10),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(100),
+          color: blueColor,
+        ),
+        child: Text(
+          "Ambil Gambar",
+          style: TextStyle(
+            fontFamily: "poppins_semibold",
+            fontSize: 16,
+            color: Colors.white,
+          ),
+        ),
+      );
+    }
+
+    Widget buktiKehadiranButton() {
+      return Padding(
+        padding: const EdgeInsets.only(top: 20),
+        child: Center(
+          child: SizedBox(
+            height: 70,
+            width: double.infinity,
+            child: ElevatedButton(
+              onPressed: () {},
+              style: ElevatedButton.styleFrom(
+                backgroundColor: fadeYellowColor,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+              ),
+              child: Text(
+                "Bukti Kehadiran",
+                style: TextStyle(
+                  fontFamily: "poppins_semibold",
+                  fontSize: 18,
+                  color: Colors.black,
+                ),
+              ),
+            ),
+          ),
+        ),
+      );
+    }
+
+    Widget textAlasanTidakHadir() {
+      return Container(
+        padding: const EdgeInsets.symmetric(horizontal: 10),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(100),
+          color: blueColor,
+        ),
+        child: Text(
+          "Alasan Tidak Hadir",
+          style: TextStyle(
+            fontFamily: "poppins_semibold",
+            fontSize: 16,
+            color: Colors.white,
+          ),
+        ),
+      );
+    }
+
+    Widget inputAlasanTidakHadir() {
+      return Container(
+        decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withValues(alpha: 0.5),
+              spreadRadius: 2,
+              blurRadius: 5,
+              offset: Offset(0, 3), // changes position of shadow
+            ),
+          ],
+        ),
+        child: TextField(
+          maxLines: 5, // Increase the height of the TextField
+          decoration: InputDecoration(
+            filled: true,
+            fillColor: Colors.white,
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10),
+              borderSide: BorderSide.none,
+            ),
+            hintText: 'Masukkan alasan tidak hadir',
+          ),
+        ),
+      );
+    }
+
+    Widget floathingActionButton() {
+      return Container(
+        width: double.infinity,
+        padding: EdgeInsets.symmetric(horizontal: 20),
+        child: ElevatedButton(
+          onPressed: () {
+            // Tambahkan aksi yang diinginkan di sini
+          },
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Color(0xFF264C6B),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
+            padding: EdgeInsets.symmetric(vertical: 15),
+          ),
+          child: Text(
+            "Upload",
+            style: TextStyle(
+              fontFamily: "poppins_semibold",
+              fontSize: 18,
+              color: Colors.white,
+            ),
+          ),
+        ),
+      );
+    }
+
     return Scaffold(
       body: Stack(
         children: [
@@ -37,19 +257,8 @@ class _AbsensiCoachState extends State<AbsensiCoachView> {
                 ),
                 child: Stack(
                   children: [
-                    Center(
-                      child: Padding(
-                        padding: const EdgeInsets.only(top: 100),
-                        child: Text(
-                          "Absensi Coach",
-                          style: TextStyle(
-                            fontFamily: "poppins_semibold",
-                            fontSize: 32,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                    ),
+                    textAbsensiCoach(),
+
                     Positioned(
                       left: 15,
                       top: 70,
@@ -87,174 +296,28 @@ class _AbsensiCoachState extends State<AbsensiCoachView> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 10),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(100),
-                      color: blueColor,
-                    ),
-                    child: Text(
-                      "Presensi Kehadiran",
-                      style: TextStyle(
-                        fontFamily: "poppins_semibold",
-                        fontSize: 16,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
+                  textPresensiKehadiran(),
+
                   SizedBox(height: 20),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Expanded(
-                        child: SizedBox(
-                          height: 70,
-                          child: ElevatedButton(
-                            onPressed: () {
-                              setState(() {
-                                hadirButtonColor = Colors.green;
-                                tidakHadirButtonColor = Colors.white;
-                                showBuktiKehadiranButton = true;
-                                showAlasanTidakHadir =
-                                    false; // Hide alasan tidak hadir
-                              });
-                            },
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: hadirButtonColor,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                            ),
-                            child: Text(
-                              "Hadir",
-                              style: TextStyle(
-                                fontFamily: "poppins_semibold",
-                                fontSize: 18,
-                                color: Colors.black,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      SizedBox(width: 10),
-                      Expanded(
-                        child: SizedBox(
-                          height: 70,
-                          child: ElevatedButton(
-                            onPressed: () {
-                              setState(() {
-                                hadirButtonColor = Colors.white;
-                                tidakHadirButtonColor = Colors.red;
-                                showBuktiKehadiranButton = false;
-                                showAlasanTidakHadir =
-                                    true; // Show alasan tidak hadir
-                              });
-                            },
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: tidakHadirButtonColor,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                            ),
-                            child: Text(
-                              "Tidak hadir",
-                              style: TextStyle(
-                                fontFamily: "poppins_semibold",
-                                fontSize: 18,
-                                color: Colors.black,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
+
+                  kehadiranButton(),
+
                   if (showBuktiKehadiranButton) ...[
                     SizedBox(height: 50),
-                    Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 10),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(100),
-                        color: blueColor,
-                      ),
-                      child: Text(
-                        "Ambil Gambar",
-                        style: TextStyle(
-                          fontFamily: "poppins_semibold",
-                          fontSize: 16,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 20),
-                      child: Center(
-                        child: SizedBox(
-                          height: 70,
-                          width: double.infinity,
-                          child: ElevatedButton(
-                            onPressed: () {},
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: fadeYellowColor,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                            ),
-                            child: Text(
-                              "Bukti Kehadiran",
-                              style: TextStyle(
-                                fontFamily: "poppins_semibold",
-                                fontSize: 18,
-                                color: Colors.black,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
+
+                    textAmbilGambar(),
+
+                    buktiKehadiranButton(),
                   ],
+
                   if (showAlasanTidakHadir) ...[
                     SizedBox(height: 50),
-                    Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 10),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(100),
-                        color: blueColor,
-                      ),
-                      child: Text(
-                        "Alasan Tidak Hadir",
-                        style: TextStyle(
-                          fontFamily: "poppins_semibold",
-                          fontSize: 16,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
+
+                    textAlasanTidakHadir(),
+
                     SizedBox(height: 20),
-                    Container(
-                      decoration: BoxDecoration(
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withValues(alpha: 0.5),
-                            spreadRadius: 2,
-                            blurRadius: 5,
-                            offset: Offset(0, 3), // changes position of shadow
-                          ),
-                        ],
-                      ),
-                      child: TextField(
-                        maxLines: 5, // Increase the height of the TextField
-                        decoration: InputDecoration(
-                          filled: true,
-                          fillColor: Colors.white,
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                            borderSide: BorderSide.none,
-                          ),
-                          hintText: 'Masukkan alasan tidak hadir',
-                        ),
-                      ),
-                    ),
+
+                    inputAlasanTidakHadir(),
                   ],
                 ],
               ),
@@ -262,30 +325,9 @@ class _AbsensiCoachState extends State<AbsensiCoachView> {
           ),
         ],
       ),
-      floatingActionButton: Container(
-        width: double.infinity,
-        padding: EdgeInsets.symmetric(horizontal: 20),
-        child: ElevatedButton(
-          onPressed: () {
-            // Tambahkan aksi yang diinginkan di sini
-          },
-          style: ElevatedButton.styleFrom(
-            backgroundColor: Color(0xFF264C6B),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10),
-            ),
-            padding: EdgeInsets.symmetric(vertical: 15),
-          ),
-          child: Text(
-            "Upload",
-            style: TextStyle(
-              fontFamily: "poppins_semibold",
-              fontSize: 18,
-              color: Colors.white,
-            ),
-          ),
-        ),
-      ),
+
+      floatingActionButton: floathingActionButton(),
+
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
