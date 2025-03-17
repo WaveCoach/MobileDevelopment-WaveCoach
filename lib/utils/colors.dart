@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+double defaultMargin = 30.0;
 
 Color backgroundColor = Color(0xFFF1FAFF);
 Color blueColor = Color(0xFF3E6585);
@@ -10,3 +13,15 @@ Color blackBlueColor = Color(0xFF223340);
 Color boxJadwal = Color(0xFFC1D2DD);
 Color waktuBoxJadwal = Color (0xFFECC791);
 Color reschedule = Color(0xFFE2A7A8);
+
+TextStyle primaryTextStyle = GoogleFonts.poppins(color: Colors.black);
+TextStyle secondaryTextStyle = GoogleFonts.poppins(color: Colors.white);
+TextStyle grayTextStyle = GoogleFonts.poppins(
+  color: Colors.white.withValues(alpha: 0.5),
+);
+
+FontWeight light = FontWeight.w300;
+FontWeight regular = FontWeight.w400;
+FontWeight medium = FontWeight.w500;
+FontWeight semiBold = FontWeight.w600;
+FontWeight bold = FontWeight.w700;
