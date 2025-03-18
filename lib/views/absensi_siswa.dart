@@ -152,6 +152,33 @@ class _AbsensiSiswaViewState extends State<AbsensiSiswaView> {
       );
     }
 
+    Widget floatingActionButton() {
+      return Container(
+        width: double.infinity,
+        padding: EdgeInsets.symmetric(horizontal: 20),
+        child: ElevatedButton(
+          onPressed: () {
+            // Tambahkan aksi yang diinginkan di sini
+          },
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Color(0xFF264C6B),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
+            padding: EdgeInsets.symmetric(vertical: 15),
+          ),
+          child: Text(
+            "Upload",
+            style: TextStyle(
+              fontFamily: "poppins_semibold",
+              fontSize: 18,
+              color: Colors.white,
+            ),
+          ),
+        ),
+      );
+    }
+
     return Scaffold(
       body: Stack(
         children: [
@@ -198,7 +225,7 @@ class _AbsensiSiswaViewState extends State<AbsensiSiswaView> {
                   textPresensiKehadiran(),
 
                   kehadiranButton(),
-                  
+
                   const SizedBox(height: 50),
                 ],
               ),
@@ -206,30 +233,8 @@ class _AbsensiSiswaViewState extends State<AbsensiSiswaView> {
           ),
         ],
       ),
-      floatingActionButton: Container(
-        width: double.infinity,
-        padding: EdgeInsets.symmetric(horizontal: 20),
-        child: ElevatedButton(
-          onPressed: () {
-            // Tambahkan aksi yang diinginkan di sini
-          },
-          style: ElevatedButton.styleFrom(
-            backgroundColor: Color(0xFF264C6B),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10),
-            ),
-            padding: EdgeInsets.symmetric(vertical: 15),
-          ),
-          child: Text(
-            "Upload",
-            style: TextStyle(
-              fontFamily: "poppins_semibold",
-              fontSize: 18,
-              color: Colors.white,
-            ),
-          ),
-        ),
-      ),
+      floatingActionButton: floatingActionButton(),
+
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }

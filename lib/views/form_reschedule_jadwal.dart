@@ -12,6 +12,97 @@ class FormRescheduleJadwalView extends StatefulWidget {
 class _FormRescheduleJadwalViewState extends State<FormRescheduleJadwalView> {
   @override
   Widget build(BuildContext context) {
+    Widget textFormRescheduleTitle() {
+      return Center(
+        child: Padding(
+          padding: const EdgeInsets.only(top: 100, left: 35, right: 35),
+          child: Text(
+            "Form Reschedule Jadwal",
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontFamily: "poppins_semibold",
+              fontSize: 32,
+              color: Colors.white,
+              height: 1, // Line height
+              letterSpacing: -0.5, // Letter spacing
+            ),
+          ),
+        ),
+      );
+    }
+
+    Widget textAlasan() {
+      return Container(
+        padding: const EdgeInsets.symmetric(horizontal: 10),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(100),
+          color: blueColor,
+        ),
+        child: Text(
+          "Alasan",
+          style: TextStyle(
+            fontFamily: "poppins_semibold",
+            fontSize: 16,
+            color: Colors.white,
+          ),
+        ),
+      );
+    }
+
+    Widget inputAlasan() {
+      return Container(
+        decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withValues(alpha: 0.5),
+              spreadRadius: 2,
+              blurRadius: 5,
+              offset: Offset(0, 3), // changes position of shadow
+            ),
+          ],
+        ),
+        child: TextField(
+          maxLines: 5, // Increase the height of the TextField
+          decoration: InputDecoration(
+            filled: true,
+            fillColor: Colors.white,
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10),
+              borderSide: BorderSide.none,
+            ),
+            hintText: 'Ketik disini',
+          ),
+        ),
+      );
+    }
+
+    Widget floatingActionButton() {
+      return Container(
+        width: double.infinity,
+        padding: EdgeInsets.symmetric(horizontal: 20),
+        child: ElevatedButton(
+          onPressed: () {
+            // Tambahkan aksi yang diinginkan di sini
+          },
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Color(0xFF264C6B),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
+            padding: EdgeInsets.symmetric(vertical: 15),
+          ),
+          child: Text(
+            "Upload",
+            style: TextStyle(
+              fontFamily: "poppins_semibold",
+              fontSize: 18,
+              color: Colors.white,
+            ),
+          ),
+        ),
+      );
+    }
+
     return Scaffold(
       body: Stack(
         children: [
@@ -33,22 +124,8 @@ class _FormRescheduleJadwalViewState extends State<FormRescheduleJadwalView> {
                 ),
                 child: Stack(
                   children: [
-                    Center(
-                      child: Padding(
-                      padding: const EdgeInsets.only(top: 100, left: 35, right: 35),
-                      child: Text(
-                        "Form Reschedule Jadwal",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                        fontFamily: "poppins_semibold",
-                        fontSize: 32,
-                        color: Colors.white,
-                        height: 1, // Line height
-                        letterSpacing: -0.5, // Letter spacing
-                        ),
-                      ),
-                      ),
-                    ),
+                    textFormRescheduleTitle(),
+
                     Positioned(
                       left: 15,
                       top: 70,
@@ -85,77 +162,14 @@ class _FormRescheduleJadwalViewState extends State<FormRescheduleJadwalView> {
               padding: const EdgeInsets.all(25.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 10),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(100),
-                      color: blueColor,
-                    ),
-                    child: Text(
-                      "Alasan",
-                      style: TextStyle(
-                        fontFamily: "poppins_semibold",
-                        fontSize: 16,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: 20),
-                    Container(
-                      decoration: BoxDecoration(
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withValues(alpha: 0.5),
-                            spreadRadius: 2,
-                            blurRadius: 5,
-                            offset: Offset(0, 3), // changes position of shadow
-                          ),
-                        ],
-                      ),
-                      child: TextField(
-                        maxLines: 5, // Increase the height of the TextField
-                        decoration: InputDecoration(
-                          filled: true,
-                          fillColor: Colors.white,
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                            borderSide: BorderSide.none,
-                          ),
-                          hintText: 'Ketik disini',
-                        ),
-                      ),
-                    ),
-                ],
+                children: [textAlasan(), SizedBox(height: 20), inputAlasan()],
               ),
             ),
           ),
         ],
       ),
-      floatingActionButton: Container(
-        width: double.infinity,
-        padding: EdgeInsets.symmetric(horizontal: 20),
-        child: ElevatedButton(
-          onPressed: () {
-            // Tambahkan aksi yang diinginkan di sini
-          },
-          style: ElevatedButton.styleFrom(
-            backgroundColor: Color(0xFF264C6B),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10),
-            ),
-            padding: EdgeInsets.symmetric(vertical: 15),
-          ),
-          child: Text(
-            "Upload",
-            style: TextStyle(
-              fontFamily: "poppins_semibold",
-              fontSize: 18,
-              color: Colors.white,
-            ),
-          ),
-        ),
-      ),
+      floatingActionButton: floatingActionButton(),
+
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }

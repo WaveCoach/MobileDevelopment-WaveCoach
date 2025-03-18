@@ -209,7 +209,7 @@ class _AbsensiCoachState extends State<AbsensiCoachView> {
       );
     }
 
-    Widget floathingActionButton() {
+    Widget floatingActionButton() {
       return Container(
         width: double.infinity,
         padding: EdgeInsets.symmetric(horizontal: 20),
@@ -326,7 +326,7 @@ class _AbsensiCoachState extends State<AbsensiCoachView> {
         ],
       ),
 
-      floatingActionButton: floathingActionButton(),
+      floatingActionButton: floatingActionButton(),
 
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
